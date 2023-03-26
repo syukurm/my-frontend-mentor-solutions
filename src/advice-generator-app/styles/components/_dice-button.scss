@@ -1,0 +1,50 @@
+@use "../../../shared/scss/vendors/open-props" as *;
+@use "../abstracts/" as *;
+@use "sass:color";
+
+.dice {
+  &-button {
+    position: absolute;
+    inset-inline: 0;
+    margin-inline: auto;
+    cursor: pointer;
+    background: none;
+    background-color: $primary-neon-green;
+    border-width: 0;
+    border-radius: $radius-6;
+    transition-timing-function: ease-out;
+    transition-duration: 250ms;
+    transition-property: box-shadow, background-color;
+    transform: translateY(50%);
+    block-size: $size-9;
+    inline-size: $size-9;
+    inset-block-end: 0;
+
+    &:hover {
+      box-shadow: 0 0 30px 0 hsla(150deg, 100%, 66%, 0.6);
+    }
+
+    &:focus {
+      outline: 1px dashed $primary-light-cyan;
+      outline-offset: 2px;
+    }
+
+    &:active {
+      background-color: color.adjust($color: hsla(150deg, 100%, 66%, 1), $lightness: 15%);
+    }
+
+    &:disabled {
+      background-color: $neutral-grayish-blue;
+
+      &:hover,
+      &:focus {
+        cursor: wait;
+        box-shadow: none;
+      }
+    }
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+}

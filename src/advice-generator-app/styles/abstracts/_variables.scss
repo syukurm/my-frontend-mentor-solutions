@@ -1,0 +1,23 @@
+@use "../../../shared/scss/vendors/open-props" as *;
+
+$colors: (
+  "primary": (
+    "light-cyan": hsl(193deg, 38%, 86%),
+    "neon-green": hsl(150deg, 100%, 66%),
+  ),
+  "neutral": (
+    "grayish-blue": hsl(217deg, 19%, 38%),
+    "dark-grayish-blue": hsl(217deg, 19%, 24%),
+    "dark-blue": hsl(218deg, 23%, 16%),
+  ),
+);
+$primary-light-cyan: var(--primary-light-cyan);
+$primary-neon-green: var(--primary-neon-green);
+$neutral-grayish-blue: var(--neutral-grayish-blue);
+$neutral-dark-grayish-blue: var(--neutral-dark-grayish-blue);
+$neutral-dark-blue: var(--neutral-dark-blue);
+$color-body: $primary-light-cyan;
+$background-color-body: $neutral-dark-blue;
+$font-size-body: calc($font-size-4 + 0.25rem);
+$font-family-body: "Manrope", sans-serif;
+$font-weight-body: $font-weight-8;

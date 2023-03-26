@@ -1,0 +1,25 @@
+@use "../abstracts/" as *;
+@use "../../../shared/scss/vendors/open-props" as *;
+
+.footer {
+  background-color: hsl(0deg, 0%, 100%);
+  border-block-start: $border-size-1 solid $primary-light-gray;
+
+  &__credits {
+    @extend %container;
+
+    display: flex;
+    justify-content: space-between;
+    padding-block: $size-4;
+    color: $neutral-gray;
+  }
+
+  &__link {
+    color: $neutral-gray;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

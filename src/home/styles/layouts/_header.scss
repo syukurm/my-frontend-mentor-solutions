@@ -1,0 +1,24 @@
+@use "../abstracts/" as *;
+@use "../../../shared/scss/vendors/open-props" as *;
+
+.header {
+  border-block-end: $border-size-1 solid $primary-light-gray;
+
+  &__container {
+    @extend %container;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    padding-block: 0.9375rem;
+    padding-inline: 1.5625rem;
+    margin-block: 0;
+    font-size: $font-size-2;
+    text-transform: uppercase;
+    letter-spacing: $font-letterspacing-2;
+    cursor: text;
+    border-inline: $border-size-1 solid $primary-light-gray;
+  }
+}

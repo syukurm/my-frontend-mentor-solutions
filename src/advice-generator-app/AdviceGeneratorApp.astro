@@ -1,0 +1,24 @@
+---
+import "@fontsource/manrope/700.css";
+import "@fontsource/manrope/800.css";
+import "~advice-generator-app/styles/main.scss";
+
+import BaseLayout from "~shared/layouts/BaseLayout.astro";
+import AdviceCard from "~advice-generator-app/components/AdviceCard.astro";
+import Footer from "~advice-generator-app/components/Footer.astro";
+---
+
+<BaseLayout title="Advice generator app">
+  <link
+    rel="icon"
+    href="/images/favicon-32x32.png"
+    type="image/png"
+    slot="favicon"
+  />
+
+  <main class="advice-generator-app">
+    <AdviceCard />
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,151 @@
+---
+import { Icon } from "astro-icon";
+
+export enum Technology {
+  Astro = "Astro",
+  Sass = "Sass",
+  Typescript = "Typescript",
+}
+
+export enum Difficulty {
+  Newbie = 1,
+  Junior,
+  Intermediate,
+  Advanced,
+  Guru,
+}
+
+export enum Language {
+  HTML = "HTML",
+  CSS = "CSS",
+  Javascript = "JS",
+  API = "API",
+}
+export interface ChallengeCardProps {
+  title: string;
+  url: string;
+  difficulty: Difficulty;
+  thumbnail: string;
+  date: string;
+  githubUrl: string;
+  frontendMentorUrl: string;
+  languages: Language[];
+  technologies: Technology[];
+}
+
+const { title, url, thumbnail, date, difficulty, githubUrl, frontendMentorUrl, languages, technologies } =
+  Astro.props as ChallengeCardProps;
+
+const difficultyLabel = Object.keys(Difficulty)[Object.values(Difficulty).indexOf(difficulty)]?.toLowerCase();
+---
+
+<article class="challenge-card">
+  <a
+    href={url}
+    target="_blank"
+    rel="prefetch"
+    class="challenge-card__image-link"
+  >
+    <img
+      class="challenge-card__image"
+      src={thumbnail}
+      alt={title}
+    />
+  </a>
+  <div class="challenge-card__info">
+    <p class="challenge-card__date">{date}</p>
+    <h2 class="challenge-card__title">
+      <a
+        href={url}
+        target="_blank"
+        rel="prefetch"
+        class="challenge-card__link"
+      >
+        {title}
+      </a>
+    </h2>
+    <div class="challenge-card__tags">
+      <ul class="challenge-card__languages">
+        {
+          [...new Set(languages)].map((language) => (
+            <li class={`challenge-card__language challenge-card__language--${language.toLowerCase()}`}>{language}</li>
+          ))
+        }
+      </ul>
+      <div class={`challenge-card__difficulty challenge-card__difficulty--${difficultyLabel}`}>
+        <span class="challenge-card__difficulty-level">
+          {difficulty}
+        </span>
+        <span class="challenge-card__difficulty-label">
+          {difficultyLabel}
+        </span>
+      </div>
+    </div>
+    <div class="challenge-card__footer">
+      <div class="challenge-card__icons">
+        <a
+          href={githubUrl}
+          target="_blank"
+        >
+          <Icon
+            name="simple-icons:github"
+            class="challenge-card__icon"
+            optimize={false}
+          />
+        </a>
+        <a
+          href={frontendMentorUrl}
+          target="_blank"
+        >
+          <Icon
+            name="simple-icons:frontendmentor"
+            class="challenge-card__icon"
+            optimize={false}
+          />
+        </a>
+      </div>
+      {
+        technologies.length > 0 && (
+          <div class="challenge-card__icons">
+            {technologies.includes(Technology.Astro) && (
+              <a
+                href="https://astro.build"
+                target="_blank"
+              >
+                <Icon
+                  name="simple-icons:astro"
+                  class="challenge-card__icon challenge-card__icon--astro"
+                  optimize={false}
+                />
+              </a>
+            )}
+            {technologies.includes(Technology.Sass) && (
+              <a
+                href="https://sass-lang.com"
+                target="_blank"
+              >
+                <Icon
+                  name="simple-icons:sass"
+                  class="challenge-card__icon challenge-card__icon--sass"
+                  optimize={false}
+                />
+              </a>
+            )}
+            {technologies.includes(Technology.Typescript) && (
+              <a
+                href="https://www.typescriptlang.org"
+                target="_blank"
+              >
+                <Icon
+                  name="simple-icons:typescript"
+                  class="challenge-card__icon challenge-card__icon--typescript"
+                  optimize={false}
+                />
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</article>

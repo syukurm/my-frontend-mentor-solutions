@@ -1,0 +1,96 @@
+---
+import diceIcon from "~advice-generator-app/images/icon-dice.svg";
+---
+
+<div class="card">
+  <h1 class="card-label">Advice # ?</h1>
+  <blockquote class="card-content">...</blockquote>
+
+  <div class="card-footer">
+    <div class="divider">
+      <span></span>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="dice-button"
+  >
+    <img
+      id="dice"
+      src={diceIcon}
+      alt="Dice"
+    />
+  </button>
+</div>
+
+<script>
+  const API_URL = "https://api.adviceslip.com/advice";
+  const TWO_SECONDS_IN_MILLISECONDS = 2000;
+
+  const dice = document.querySelector("#dice");
+  const diceButton = document.querySelector(".dice-button");
+  const cardLabel = document.querySelector(".card-label");
+  const cardContent = document.querySelector(".card-content");
+
+  interface AdviceSlipAPIResponse {
+    slip: {
+      id: number;
+      advice: string;
+    };
+  }
+
+  interface Advice {
+    id: string | number;
+    content: string;
+  }
+
+  async function fetchAdvice(): Promise<Advice> {
+    try {
+      const advice = (await fetch(API_URL, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+      }).then((res) => res.json())) as AdviceSlipAPIResponse;
+
+      return {
+        id: advice.slip.id,
+        content: advice.slip.advice,
+      };
+    } catch (error: unknown) {
+      return {
+        id: "Error",
+        content: "Unable to fetch advice...",
+      };
+    }
+  }
+
+  function setLoading(value: boolean): void {
+    if (value === true) {
+      diceButton?.setAttribute("disabled", "");
+      dice?.classList.add("spin");
+
+      setTimeout(() => {
+        setLoading(false);
+      }, TWO_SECONDS_IN_MILLISECONDS);
+    } else {
+      diceButton?.removeAttribute("disabled");
+      dice?.classList.remove("spin");
+    }
+  }
+
+  async function getNewAdvice(): Promise<void> {
+    setLoading(true);
+    const advice = await fetchAdvice();
+
+    if (cardLabel !== null && cardContent !== null) {
+      cardLabel.textContent = `Advice # ${advice.id}`;
+      cardContent.textContent = advice.content;
+    }
+  }
+
+  diceButton?.addEventListener("click", getNewAdvice);
+
+  await getNewAdvice();
+</script>

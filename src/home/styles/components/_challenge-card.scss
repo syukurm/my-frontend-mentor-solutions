@@ -1,0 +1,207 @@
+@use "../abstracts/" as *;
+@use "../../../shared/scss/vendors/open-props" as *;
+@use "sass:color";
+@use "sass:string" as string;
+
+$font-size-title: 1.5rem;
+$font-size-language: 1.125rem;
+$font-size-difficulty: 0.875rem;
+$difficulties: (
+  "newbie": $primary-light-blue,
+  "junior": $accent-green,
+  "intermediate": $accent-yellow,
+  "advanced": $accent-orange,
+  "guru": $accent-red,
+);
+$languages: (
+  "html": $primary-light-blue,
+  "css": $primary-blue,
+  "js": $accent-pink,
+  "api": $accent-green,
+);
+
+.challenge-card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(219, 229, 230);
+  border-style: solid;
+  border-width: $border-size-1;
+  border-radius: $radius-3;
+
+  &__image-link {
+    overflow: hidden;
+    border-start-start-radius: $radius-3;
+    border-start-end-radius: $radius-3;
+  }
+
+  &__image {
+    transition: transform 0.3s ease 0s;
+    inline-size: 100%;
+    object-fit: cover;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__info {
+    padding: 1.5625rem;
+  }
+
+  &__date {
+    display: inline-block;
+    margin: 0;
+    font-size: calc($font-size-0 + 0.125rem);
+    color: $neutral-gray;
+    cursor: text;
+  }
+
+  &__title {
+    margin-block-start: 0;
+    margin-block-end: $size-4;
+    font-size: $font-size-title;
+    font-weight: $font-weight-5;
+    line-height: normal;
+  }
+
+  &__link {
+    font-family: $font-family-heading;
+    color: $neutral-black;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__languages {
+    display: inline-flex;
+    gap: $size-2;
+    padding-inline-start: 0;
+    margin-block: 0;
+    margin-block-end: $size-2;
+    list-style-type: none;
+  }
+
+  &__language {
+    font-size: $font-size-language;
+    font-weight: $font-weight-7;
+    text-transform: uppercase;
+    cursor: text;
+  }
+
+  @each $language, $color in $languages {
+    &__language--#{$language} {
+      color: $color;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-block-start: $size-5;
+  }
+
+  &__icons {
+    display: flex;
+    gap: calc($size-2 + $size-1);
+    align-items: center;
+  }
+
+  &__icon {
+    inline-size: 20px;
+    color: $neutral-gray;
+    transition: color 0.3s ease 0s;
+
+    &:hover {
+      color: $neutral-black;
+    }
+
+    &--astro {
+      color: hsl(22deg, 100%, 60%);
+
+      &:hover {
+        color: hsl(22deg, 100%, 45%);
+      }
+    }
+
+    &--sass {
+      color: hsl(330deg, 53%, 60%);
+
+      &:hover {
+        color: hsl(330deg, 53%, 50%);
+      }
+    }
+
+    &--typescript {
+      color: hsl(211deg, 60%, 48%);
+
+      &:hover {
+        color: hsl(211deg, 60%, 38%);
+      }
+    }
+  }
+
+  &__difficulty {
+    display: inline-flex;
+    justify-content: center;
+    margin-block-end: 0.625rem;
+    border-style: solid;
+    border-width: $border-size-1;
+    border-radius: $radius-2;
+
+    &-level {
+      color: rgb(255, 255, 255);
+    }
+
+    &-label {
+      background-color: transparent;
+    }
+
+    &-label,
+    &-level {
+      padding-inline: 0.4688rem;
+      font-size: $font-size-difficulty;
+      font-weight: $font-weight-7;
+      line-height: $font-lineheight-3;
+      text-transform: uppercase;
+      cursor: initial;
+    }
+
+    @each $difficulty, $color in $difficulties {
+      &--#{$difficulty} {
+        $difficulty-length: string.length(
+          $string: "--" + $difficulty,
+        );
+        $parent-length: string.length(
+          $string: #{&},
+        );
+        $child: string.slice(
+          $string: #{&},
+          $start-at: 0,
+          $end-at: $parent-length - $difficulty-length,
+        );
+
+        border-color: $color;
+
+        > #{$child} {
+          &-level {
+            background-color: $color;
+          }
+
+          &-label {
+            color: $color;
+          }
+        }
+      }
+    }
+  }
+}

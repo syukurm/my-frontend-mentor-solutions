@@ -1,0 +1,123 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-sass-guidelines", "stylelint-config-recess-order"],
+  "plugins": [
+    "stylelint-color-format",
+    "stylelint-csstree-validator",
+    "stylelint-declaration-block-no-ignored-properties",
+    "stylelint-declaration-strict-value",
+    "stylelint-group-selectors",
+    "stylelint-high-performance-animation",
+    "stylelint-no-nested-media",
+    "stylelint-selector-tag-no-without-class",
+    "stylelint-use-logical-spec",
+    "stylelint-use-nesting",
+    "stylelint-prettier"
+  ],
+  "rules": {
+    "max-nesting-depth": 5,
+
+    "function-url-no-scheme-relative": true,
+    "function-url-quotes": "always",
+
+    "font-weight-notation": "numeric",
+
+    "media-feature-name-no-unknown": true,
+
+    "at-rule-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+
+    "scss/double-slash-comment-whitespace-inside": "always",
+
+    "scss/declaration-nested-properties": "never",
+    "plugin/declaration-block-no-ignored-properties": true,
+    "scale-unlimited/declaration-strict-value": [
+      ["/color/", "z-index", "font-size", "font-family"],
+      { "ignoreKeywords": { "": ["inherit"], "/color/": ["currentColor", "transparent", "inherit"] } }
+    ],
+
+    "scss/dollar-variable-no-missing-interpolation": true,
+    "scss/dollar-variable-colon-space-after": "always",
+    "scss/dollar-variable-colon-space-before": "never",
+    "scss/dollar-variable-pattern": "^[_]?[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
+    "scss/no-duplicate-dollar-variables": true,
+
+    "scss/percent-placeholder-pattern": "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
+    "scss/at-extend-no-missing-placeholder": true,
+
+    "scss/at-mixin-named-arguments": "always",
+    "scss/at-mixin-parentheses-space-before": "always",
+    "scss/at-mixin-argumentless-call-parentheses": "always",
+    "scss/at-mixin-pattern": "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
+
+    "scss/at-function-parentheses-space-before": "always",
+    "scss/at-function-pattern": "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
+
+    "scss/operator-no-newline-before": true,
+    "scss/operator-no-newline-after": true,
+    "scss/operator-no-unspaced": true,
+
+    "selector-attribute-quotes": "always",
+    "selector-max-universal": 1,
+    "selector-max-specificity": "1,3,3",
+    "selector-max-compound-selectors": 3,
+    "scss/selector-no-redundant-nesting-selector": true,
+
+    "scss/at-import-no-partial-leading-underscore": true,
+    "scss/at-import-partial-extension-blacklist": ["scss"],
+
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "ignoreAtRules": ["else"],
+        "except": ["blockless-after-same-name-blockless", "first-nested"],
+        "ignore": ["after-comment"]
+      }
+    ],
+
+    "scss/at-else-closing-brace-newline-after": "always-last-in-chain",
+    "scss/at-else-closing-brace-space-after": "always-intermediate",
+    "scss/at-else-empty-line-before": "never",
+    "scss/at-else-if-parentheses-space-before": "always",
+    "scss/at-if-closing-brace-newline-after": "always-last-in-chain",
+    "scss/at-if-closing-brace-space-after": "always-intermediate",
+
+    "color-named": "never",
+
+    "plugin/selector-tag-no-without-class": ["div", "span"],
+
+    "csstools/use-nesting": "always",
+
+    "csstree/validator": {
+      "syntaxExtensions": ["sass"],
+      "ignoreAtrules": ["else", "apply"],
+      "properties": {
+        "font-size": "| clamp(<length>, <length>, <length>)",
+        "padding-inline": "| clamp(<length>, <length>, <length>)",
+        "inline-size": "| clamp(<length>, <length>, <length>) | min(<any-value>)"
+      }
+    },
+
+    "color-function-notation": "legacy",
+
+    "alpha-value-notation": "number",
+
+    "scss/at-function-named-arguments": ["always", { "ignoreFunctions": ["clamp", "min"] }],
+    "scss/media-feature-value-dollar-variable": null,
+    "color-format/format": { "format": "hsla" },
+
+    "prettier/prettier": true,
+
+    "liberty/use-logical-spec": true,
+
+    "pitcher/no-nested-media": true,
+
+    "plugin/stylelint-group-selectors": true,
+    "plugin/no-low-performance-animation-properties": null,
+    "order/properties-alphabetical-order": null
+  },
+
+  "ignoreFiles": ["node_modules/**/*"]
+}

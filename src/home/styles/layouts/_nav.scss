@@ -1,0 +1,54 @@
+@use "../abstracts/" as *;
+@use "../../../shared/scss/vendors/open-props" as *;
+
+.nav {
+  @extend %container;
+
+  display: flex;
+  justify-content: space-between;
+
+  &__logo {
+    padding-block: $size-4;
+  }
+
+  &__logo-link {
+    font-family: $font-family-heading;
+    font-size: $font-size-2;
+    font-weight: $font-weight-7;
+    color: $neutral-black;
+    text-decoration: none;
+  }
+
+  &__list {
+    display: inline-flex;
+    gap: $size-4;
+    margin-block: auto;
+  }
+
+  &__link {
+    position: relative;
+    font-family: $font-family-heading;
+    font-size: $font-size-2;
+    font-style: italic;
+    font-weight: $font-weight-7;
+    color: $neutral-black;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &::after {
+      position: absolute;
+      content: "";
+      background-color: $accent-red;
+      transition: transform 0.3s ease 0s;
+      transform: scaleX(0);
+      inline-size: 100%;
+      block-size: 2px;
+      inset-inline-start: 0;
+      inset-block-end: -4px;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+}

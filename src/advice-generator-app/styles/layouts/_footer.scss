@@ -1,0 +1,14 @@
+@use "../../../shared/scss/vendors/open-props" as *;
+
+.footer {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  margin-block-end: $size-2;
+  font-size: $font-size-fluid-0;
+  text-align: center;
+
+  a {
+    color: hsl(228deg, 45%, 44%);
+  }
+}

@@ -1,0 +1,15 @@
+@use "../../../shared/scss/vendors/open-props" as *;
+@use "../abstracts/" as *;
+
+.home {
+  min-block-size: 86.2vh;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $size-5;
+  padding-block: $size-7;
+  margin-inline: auto;
+  inline-size: min(100% - $size-10, 1200px);
+}

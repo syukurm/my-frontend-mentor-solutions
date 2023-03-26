@@ -1,0 +1,16 @@
+{
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "lib": ["DOM", "ESNext"],
+    "jsx": "preserve",
+
+    "baseUrl": ".",
+    "paths": {
+      "~shared/*": ["src/shared/*"],
+      "~home/*": ["src/home/*"],
+      "~advice-generator-app/*": ["src/advice-generator-app/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

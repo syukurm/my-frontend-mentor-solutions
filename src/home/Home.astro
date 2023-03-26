@@ -1,0 +1,47 @@
+---
+import "@fontsource/barlow/400.css";
+import "@fontsource/barlow/500.css";
+import "@fontsource/barlow/600.css";
+import "@fontsource/barlow/700.css";
+import "@fontsource/heebo/400.css";
+import "@fontsource/heebo/500.css";
+import "@fontsource/heebo/700.css";
+import "~home/styles/main.scss";
+import adviceGeneratorAppScreenshot from "~advice-generator-app/screenshot.png";
+
+import BaseLayout from "~shared/layouts/BaseLayout.astro";
+import ChallengeCard, {
+  type ChallengeCardProps,
+  Difficulty,
+  Language,
+  Technology,
+} from "~home/components/ChallengeCard.astro";
+import Header from "~home/components/Header.astro";
+import Navbar from "~home/components/Navbar.astro";
+import Footer from "~home/components/Footer.astro";
+
+const challenges: ChallengeCardProps[] = [
+  {
+    title: "Advice generator app",
+    url: "/advice-generator-app",
+    thumbnail: adviceGeneratorAppScreenshot,
+    date: "2022/08/27",
+    difficulty: Difficulty.Junior,
+    githubUrl: "https://github.com/syukurm/my-frontend-mentor-solutions/tree/main/src/advice-generator-app",
+    frontendMentorUrl: "https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db",
+    technologies: [Technology.Astro, Technology.Sass, Technology.Typescript],
+    languages: [Language.HTML, Language.CSS, Language.Javascript, Language.API],
+  },
+];
+---
+
+<BaseLayout>
+  <Navbar />
+  <main class="home">
+    <Header title="My Solutions" />
+    <section class="cards">
+      {challenges.map((challenge) => <ChallengeCard {...challenge} />)}
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

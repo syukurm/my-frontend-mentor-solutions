@@ -1,0 +1,15 @@
+.spin {
+  animation-name: spin;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

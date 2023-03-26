@@ -1,0 +1,13 @@
+---
+export interface HeaderProps {
+  title: string;
+}
+
+const { title } = Astro.props as HeaderProps;
+---
+
+<header class="header">
+  <div class="header__container">
+    <h1 class="header__title">{title}</h1>
+  </div>
+</header>

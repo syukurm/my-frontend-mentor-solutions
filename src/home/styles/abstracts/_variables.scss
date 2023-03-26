@@ -1,0 +1,39 @@
+@use "../../../shared/scss/vendors/open-props" as *;
+
+$colors: (
+  "primary": (
+    "light-blue": hsl(189.1deg, 49.7%, 61%),
+    "blue": hsl(226.9deg, 44.9%, 44.1%),
+    "light-gray": hsl(226.7deg, 60%, 94.1%),
+  ),
+  "accent": (
+    "pink": hsl(335deg, 52.9%, 60%),
+    "green": hsl(78.1deg, 65.1%, 55.1%),
+    "yellow": hsl(45.1deg, 96.7%, 48%),
+    "orange": hsl(29deg, 90.4%, 55.1%),
+    "red": hsl(351deg, 84.3%, 55.1%),
+  ),
+  "neutral": (
+    "white": hsl(0deg, 0%, 98%),
+    "black": hsl(200deg, 9.7%, 12.2%),
+    "gray": hsl(0deg, 0%, 45.1%),
+  ),
+);
+$primary-light-blue: var(--primary-light-blue);
+$primary-blue: var(--primary-blue);
+$primary-light-gray: var(--primary-light-gray);
+$accent-pink: var(--accent-pink);
+$accent-green: var(--accent-green);
+$accent-yellow: var(--accent-yellow);
+$accent-orange: var(--accent-orange);
+$accent-red: var(--accent-red);
+$neutral-white: var(--neutral-white);
+$neutral-black: var(--neutral-black);
+$neutral-gray: var(--neutral-gray);
+$font-family-body: "Heebo", sans-serif;
+$font-family-heading: "Barlow", sans-serif;
+$color-body: $neutral-black;
+$background-color-body: $neutral-white;
+$line-height-body: $font-lineheight-3;
+$font-size-body: $font-size-1;
+$font-weight-body: $font-weight-4;

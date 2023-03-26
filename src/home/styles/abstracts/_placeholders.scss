@@ -1,0 +1,6 @@
+@use "../../../shared/scss/vendors/open-props" as *;
+
+%container {
+  inline-size: min(100% - $size-10, 1400px);
+  margin-inline: auto;
+}

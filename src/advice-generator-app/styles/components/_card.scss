@@ -1,0 +1,67 @@
+@use "../../../shared/scss/vendors/open-props" as *;
+@use "../abstracts/" as *;
+
+.card {
+  position: relative;
+  padding-block-start: $size-8;
+  padding-block-end: $size-10;
+  padding-inline: clamp($size-5, 5vw, $size-8);
+  margin-inline: auto;
+  background-color: $neutral-dark-grayish-blue;
+  border-radius: $radius-3;
+  inline-size: min(100% - $size-8, $size-15 + $size-10);
+  min-block-size: $size-13;
+
+  &-label {
+    margin: 0;
+    font-size: $font-size-0;
+    font-weight: $font-weight-7;
+    color: $primary-neon-green;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: calc($font-letterspacing-4 + 0.1em);
+  }
+
+  &-content {
+    margin-inline: $size-2;
+    text-align: center;
+  }
+
+  &-label,
+  &-content {
+    cursor: initial;
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: $size-2;
+
+    &::before,
+    &::after {
+      display: inline-block;
+      margin-inline: $size-1;
+      content: "";
+      background-color: $primary-light-cyan;
+      border-radius: $radius-2;
+      block-size: $size-3;
+      inline-size: 0.4rem;
+    }
+  }
+
+  &::before,
+  &::after {
+    display: inline-block;
+    content: "";
+    background-color: $neutral-grayish-blue;
+    block-size: 1px;
+    inline-size: 45%;
+  }
+}
